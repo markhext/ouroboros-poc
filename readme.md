@@ -2,7 +2,7 @@
 
 Description - Isomorphic React JS with Hapi JS server - e-commerce platform (Proof of Concept)
 
-![](assets/logo-single.svg)
+![](_assets/logo-single.svg)
 
 ## What you you'll need
 
