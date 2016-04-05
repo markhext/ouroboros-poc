@@ -2,7 +2,7 @@
 
 Description - Isomorphic React JS with Hapi JS server - e-commerce platform (Proof of Concept)
 
-![](https://raw.githubusercontent.com/markhext/ouroboros-poc/blob/master/_assets/logo-single.svg)
+![](/_assets/logo-single.svg?raw=true)
 
 ## What you you'll need
 
