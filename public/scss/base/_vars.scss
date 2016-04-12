@@ -1,0 +1,123 @@
+//--------------------------------------------------------------------
+//
+//  Colors
+//
+//--------------------------------------------------------------------
+
+
+
+
+$white                  : #FAFAFA;
+$cream-green            : #D1DBBD;
+$copper-oxide           : #91AA9D;
+$heavy-ocean            : #3E606F;
+$night-ocean            : #193441;
+
+$border-grey            : #DDDDDD;
+$lite-grey              : #F6F6F6;
+
+$admin-green            : #89AA87;
+
+
+$padding-full: 24px;
+$padding-half: 12px;
+
+
+//--------------------------------------------------------------------
+//
+//  Responsive breakpoints
+//
+//--------------------------------------------------------------------
+
+$bp-desktop             : "desktop" !default;
+$bp-tablet              : "tablet" !default;
+$bp-phone               : "phone" !default;
+
+$breakpoint-phone       : 20em !default; // 320px
+$breakpoint-tablet      : 48em !default; // 768px
+$breakpoint-desktop     : 62em !default; // 992px
+
+//--------------------------------------------------------------------
+//
+//  Colors
+//
+//--------------------------------------------------------------------
+
+$color-black            : #000000 !default;
+$color-black-off        : #222222 !default;
+$color-blue             : #30343B !default;
+$color-grey             : #CCCCCC !default;
+$color-grey-dark        : #999999 !default;
+$color-red              : #EF2F34 !default;
+$color-white            : #FFFFFF !default;
+$color-white-off        : #F0F0F0 !default;
+
+$color-grey-1           : #FAFAFA !default;
+$color-grey-2           : #F5F5F5 !default;
+$color-grey-3           : #ECECEC !default;
+$color-grey-4           : #F9F9F9 !default;
+$color-grey-5           : #F2F2F2 !default;
+$color-grey-6           : #b3b3b3 !default;
+$color-grey-7           : #ebebeb !default;
+
+$color-chooser-black    : #000000 !default;
+$color-chooser-white    : #FFFFFF !default;
+$color-chooser-red      : #E83554 !default;
+$color-chooser-blue     : #4EB3F2 !default;
+
+$color-haze-gold        : #CEAB83 !default;
+$color-titanium-grey    : #5A5553 !default;
+$color-mystic-silver    : #ADA9A9 !default;
+
+//--------------------------------------------------------------------
+//
+//  Fonts
+//
+//--------------------------------------------------------------------
+
+$font-size-root         : 16px !default;
+$font-size-base         : 1rem !default;
+$line-height-base       : 1.5 !default;
+$font-family-base       : FrutigerNextLT !default;
+
+//--------------------------------------------------------------------
+//
+//  Font weights
+//
+//--------------------------------------------------------------------
+
+$font-light             : 300 !default;
+$font-regular           : 400 !default;
+$font-medium            : 500 !default;
+$font-bold              : 700 !default;
+
+//--------------------------------------------------------------------
+//
+//  Containers
+//
+//--------------------------------------------------------------------
+
+$container              : 940px !default;
+$container-wide         : 1680px !default;
+
+//--------------------------------------------------------------------
+//
+//  Spacing
+//
+//--------------------------------------------------------------------
+
+$default-spacing        : 40px !default;
+$half-spacing           : ($default-spacing / 2) !default;
+$double-spacing         : ($default-spacing * 2) !default;
+
+//--------------------------------------------------------------------
+//
+//  Borders
+//
+//--------------------------------------------------------------------
+
+$border                 : 1px solid $color-grey !default;
+$border-thick           : 2px solid $color-grey !default;
+
+
+

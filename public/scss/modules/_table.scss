@@ -1,0 +1,24 @@
+table {
+
+  margin-left: 48px;
+  width:100%;
+
+  thead {
+    background: #779B74;
+    color:#fff;
+    text-align: left;
+
+    tr {
+      background: #779B74;
+    }
+
+    th {
+      padding: 12px;
+      background: #779B74;
+    }
+  }
+
+  td {
+    padding: 12px 0;
+  }
+}

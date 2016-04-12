@@ -1,0 +1,100 @@
+
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == $bp-desktop {
+    @media (min-width: $breakpoint-tablet) { @content ; }
+  }
+    // @else if $breakpoint == $bp-tablet {
+    //     @media (min-width: $breakpoint-tablet) { @content ; }
+    // }
+  @else if $breakpoint == $bp-phone {
+    @media (max-width: $breakpoint-tablet)  { @content ; }
+  }
+}
+
+//--------------------------------------------------------------------
+//
+//  Grid column
+//
+//--------------------------------------------------------------------
+
+[class*='col-'] {
+  padding-right: $half-spacing;
+  float: left;
+
+}
+
+[class*='col-']:last-of-type {
+  padding-right: 0;
+}
+
+//--------------------------------------------------------------------
+//
+//  Grid column sizing
+//
+//--------------------------------------------------------------------
+
+.col-1 {
+  width: (100% / 12) * 1;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 1;
+  }
+}
+
+.col-2 {
+  width: (100% / 12) * 2;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 2;
+  }
+}
+
+.col-3 {
+  width: (100% / 12) * 3;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 3;
+  }
+}
+
+.col-4 {
+  width: (100% / 12) * 4;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 4;
+  }
+}
+
+.col-5 {
+  width: (100% / 12) * 5;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 5;
+  }
+}
+
+.col-6 {
+  width: (100% / 12) * 6;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 6;
+  }
+}
+
+.col-7 {
+  width: (100% / 12) * 7;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 7;
+  }
+}
+
+.col-10 {
+  width: (100% / 12) * 10;
+
+  @include breakpoint($bp-desktop) {
+    width: (100% / 12) * 10;
+  }
+}
+

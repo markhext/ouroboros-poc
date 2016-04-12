@@ -1,21 +1,40 @@
 // SMACSS
 
-@import 'base/normalize';
+//@import 'base/normalize';
 
 
 // BASE
-@import 'base/var';
+@import 'base/vars';
+@import 'base/colors';
 @import 'base/core';
 
 
+
 //LAYOUTS
+@import 'layout/generic';
+@import 'layout/grid';
 @import 'layout/home';
 @import 'layout/admin';
 @import 'layout/plp';
 @import 'layout/pdp';
 
 
+
+// COMPONENTS
+@import 'components/buttons';
+
+
+
 //MODULES
+@import 'modules/pageheader';
+@import 'modules/banner';
+@import 'modules/sidenav';
+@import 'modules/from';
+
+//ADMIN MODULES
+@import 'modules/sideBar';
+@import 'modules/adminheader';
+@import 'modules/table';
 
 
 

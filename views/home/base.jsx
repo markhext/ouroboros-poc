@@ -1,19 +1,22 @@
 
 import React from 'react';
+import Header from '../common/header.common.jsx';
+import Banner from './banner.jsx';
 
 
 class Layout extends React.Component {
 
-    clicker() {
-        alert('Test');
 
-    }
 
     render () {
         return (
             <div>
 
-                <h1 onClick={this.clicker}>Welcome -- -</h1>
+                <Header />
+
+                <Banner />
+
+                <h1>The Summer has arrived</h1>
 
             </div>
 

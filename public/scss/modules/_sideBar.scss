@@ -1,0 +1,38 @@
+#side-bar {
+  background: #333;
+  width:110px;
+  height:auto;
+  position:fixed;
+  top:1px;
+  bottom: 1px;
+  left: 1px;
+
+    li {
+      padding: 24px 0;
+      color:#ccc;
+      text-align: center;
+      cursor: pointer;
+      transition: all linear 300ms;
+
+
+      &:hover {
+        color:#FFFFFF;
+      }
+
+      img {
+        height: 60px;
+      }
+
+
+      i {
+        font-size: 1.4rem;
+      }
+
+      span {
+        display: block;
+        margin-top: 6px;
+      }
+
+
+    }
+}

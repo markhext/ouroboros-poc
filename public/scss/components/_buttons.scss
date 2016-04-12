@@ -1,0 +1,18 @@
+.admin-btn {
+
+  border: none;
+  padding: 12px 24px;
+
+
+  &.btn-primary {
+    background: #779B74;
+    color:#ffffff;
+    font-size: 1rem;
+  }
+
+  &.btn-secondary {
+    background: transparent;
+    color:#779B74;
+    border:1px solid #779B74;
+  }
+}

@@ -1,0 +1,29 @@
+form {
+
+  .field {
+    clear: both;
+    padding-bottom: 24px;
+    margin-bottom: 48px;
+
+    button {
+      float:right;
+    }
+  }
+
+  label {
+    float: left;
+    clear: left;
+  }
+
+  input {
+
+    height:36px;
+    min-width: 325px;
+    margin-left: 165px;
+    font-size: 1.2rem;
+    float:right;
+    clear: right;
+
+  }
+
+}

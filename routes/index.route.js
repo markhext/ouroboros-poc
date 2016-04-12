@@ -8,6 +8,12 @@ const HapiReactViews = require('hapi-react-views');
 
 const IsomophicRenderer = require('../controllers/isomophicRenderer.js');
 
+const PostNewCategory = require('../controllers/postNewCategory.js');
+
+
+const Categories = require('../models/newCategory.model.js');
+
+
 
 /**
  * Constructor for initiating the Routes with the Hapi.js server constructor
@@ -37,6 +43,7 @@ class Routes {
         this.adminRoute();
         this.images();
         this.builds();
+        this.categoryPost();
 
 
     }
@@ -55,7 +62,7 @@ class Routes {
                         response: reply,
                         state: {
                             headTitle: 'Home Page',
-                            pageTitle: 'Welcome to the home page'
+                            base: 'home'
                         }
 
                     });
@@ -78,7 +85,7 @@ class Routes {
                     response: reply,
                     state: {
                         headTitle: 'Admin Page',
-                        pageTitle: 'Welcome to the Admin page'
+                        base: 'admin'
                     }
 
                 });
@@ -118,13 +125,87 @@ class Routes {
 
                 var param = request.params.file;
 
-                console.log(`${param}`);
-
                 reply.file(`./public/${param}`);
             }
         });
     }
 
+
+    /* ----------------
+     JSON POSTS
+     --------------------*/
+
+
+    categoryPost () {
+        this.server.route([{
+            method: 'POST',
+            path: '/submit-category',
+            handler: ( request, reply )=> {
+
+                var postNewCategory = new PostNewCategory(request, reply);
+
+                postNewCategory.process;
+            }
+
+
+        },
+
+        {
+            method: 'GET',
+            path: '/get-categories',
+            handler: ( request, reply )=> {
+
+                Categories.find({}, (err, doc)=>{
+
+                    reply(doc);
+
+                });
+
+            }
+
+        },
+
+        {
+            method: 'DELETE',
+            path: '/delete-category/{id?}',
+            handler: ( request, reply )=> {
+
+                var item = encodeURIComponent(request.params.id);
+
+                //reply(item);
+
+                Categories.findOneAndRemove({_id: item}, (err)=>{
+
+                    if(err){
+                        reply(err);
+                    }else {
+
+                        Categories.find({}, (err, doc)=>{
+
+                            reply(doc);
+
+                        });
+                    }
+
+
+
+
+                });
+
+
+
+
+            }
+
+        }
+
+
+
+
+        ]);
+
+
+    }
 
 
 }
