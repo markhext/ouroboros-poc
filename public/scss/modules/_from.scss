@@ -5,6 +5,17 @@ form {
     padding-bottom: 24px;
     margin-bottom: 48px;
 
+    &.divider {
+      margin: 48px 0 24px;
+
+      h3 {
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 12px;
+        font-size: 1.4rem;
+        color:#888;
+      }
+    }
+
     button {
       float:right;
     }
@@ -23,6 +34,16 @@ form {
     font-size: 1.2rem;
     float:right;
     clear: right;
+
+  }
+
+  textarea {
+    min-width: 325px;
+    margin-left: 165px;
+    font-size: 1.2rem;
+    float:right;
+    clear: right;
+    border:1px solid #cccccc;
 
   }
 

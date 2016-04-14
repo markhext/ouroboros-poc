@@ -1,30 +1,35 @@
 
 import React from 'react';
 import Header from '../common/header.common.jsx';
-import Banner from './banner.jsx';
 
+class Base extends React.Component {
 
-class Layout extends React.Component {
+    constructor (props) {
+        super(props);
+
+    }
+
 
 
     render () {
+
+
         return (
+
             <div>
 
                 <Header init={this.props.init} />
 
-                <Banner />
-
-                <h1>The Summer has arrived</h1>
+                <h1>{this.props.init.heading}</h1>
 
             </div>
+
 
         );
     }
 }
 
 
-
-module.exports = Layout;
+module.exports = Base;
 
 

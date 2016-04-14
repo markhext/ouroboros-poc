@@ -14,11 +14,16 @@ class App extends React.Component {
                     <link rel="stylesheet" href="../public/build/index.css" />
 
 
+                    <meta name="description" content={this.props.page.pageDescription} />
+                    <meta name="keywords" content={this.props.page.metaKeywords} />
+
+
                 </head>
 
                 <body>
 
-                    <div id="app-view" dangerouslySetInnerHTML={{__html: this.props.remount }}>
+                    <div id="app-view"
+                        dangerouslySetInnerHTML={{__html: this.props.remount }}>
                     </div>
 
                     <script id="app-state"

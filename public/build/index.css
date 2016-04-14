@@ -39,6 +39,9 @@ img {
   max-width: 100%;
   max-height: 100%; }
 
+#app-view {
+  position: relative; }
+
 .container {
   max-width: 1920px;
   margin: 0 auto; }
@@ -128,38 +131,49 @@ section {
 
 #page-header {
   width: 100%; }
-  #page-header .header-section {
-    border-bottom: 1px solid #DDDDDD;
-    min-height: 47px; }
-    #page-header .header-section.lite-grey {
-      background: url("../images/texture_tile_2.png") #FFFFFF;
-      border-bottom: 1px solid #DDDDDD; }
-    #page-header .header-section #logo {
+  #page-header section.header-section {
+    border-bottom: 1px solid #eaeaea;
+    min-height: 47px;
+    margin-top: 0; }
+    #page-header section.header-section.lite-grey {
+      background: url("../images/texture_tile_2.png") #fff;
+      border-bottom: 1px solid #ccc; }
+    #page-header section.header-section #logo {
       height: 40px;
       margin-left: 24px;
       cursor: pointer;
       float: left; }
-    #page-header .header-section .upper-right-links {
+    #page-header section.header-section .upper-right-links {
       float: right;
       width: 380px;
       text-align: right;
       padding: 12px; }
-      #page-header .header-section .upper-right-links a {
+      #page-header section.header-section .upper-right-links a {
         margin-left: 24px;
-        font-size: .9rem; }
-    #page-header .header-section nav {
+        font-size: .9rem;
+        color: #888; }
+    #page-header section.header-section nav {
       margin: 0 auto;
-      width: 360px;
-      padding: 48px 0 12px;
-      height: auto; }
-      #page-header .header-section nav a {
+      padding: 24px 0 16px;
+      height: auto;
+      text-align: center;
+      border-bottom: 1px solid #eaeaea; }
+      #page-header section.header-section nav a {
         text-decoration: none;
         color: #444444;
         text-align: center;
         margin-right: 36px;
-        text-transform: uppercase; }
-        #page-header .header-section nav a:last-child {
+        text-transform: uppercase;
+        padding-bottom: 14px;
+        border-bottom: 3px solid transparent;
+        transition: all linear 250ms; }
+        #page-header section.header-section nav a:hover {
+          border-bottom: 3px solid #53a4d7; }
+        #page-header section.header-section nav a:last-child {
           margin-right: 0; }
+    #page-header section.header-section .lower-header-bar {
+      background: url("../images/texture_tile_2.png") #fff;
+      padding: 24px 0; }
 
 #banner {
   width: 100%;
@@ -178,6 +192,13 @@ form .field {
   clear: both;
   padding-bottom: 24px;
   margin-bottom: 48px; }
+  form .field.divider {
+    margin: 48px 0 24px; }
+    form .field.divider h3 {
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 12px;
+      font-size: 1.4rem;
+      color: #888; }
   form .field button {
     float: right; }
 
@@ -192,6 +213,14 @@ form input {
   font-size: 1.2rem;
   float: right;
   clear: right; }
+
+form textarea {
+  min-width: 325px;
+  margin-left: 165px;
+  font-size: 1.2rem;
+  float: right;
+  clear: right;
+  border: 1px solid #cccccc; }
 
 #side-bar {
   background: #333;

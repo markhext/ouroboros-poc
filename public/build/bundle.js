@@ -19679,6 +19679,10 @@
 
 	var _base4 = _interopRequireDefault(_base3);
 
+	var _base5 = __webpack_require__(170);
+
+	var _base6 = _interopRequireDefault(_base5);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19713,9 +19717,11 @@
 	                    switch (_this2.props.base) {
 
 	                        case "admin":
-	                            return _react2.default.createElement(_base4.default, null);
+	                            return _react2.default.createElement(_base4.default, { init: _this2.props });
+	                        case "categories":
+	                            return _react2.default.createElement(_base6.default, { init: _this2.props });
 	                        default:
-	                            return _react2.default.createElement(_base2.default, null);
+	                            return _react2.default.createElement(_base2.default, { init: _this2.props });
 	                    }
 	                }()
 	            );
@@ -19770,7 +19776,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_headerCommon2.default, null),
+	                _react2.default.createElement(_headerCommon2.default, { init: this.props.init }),
 	                _react2.default.createElement(_banner2.default, null),
 	                _react2.default.createElement(
 	                    'h1',
@@ -19790,7 +19796,7 @@
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19809,89 +19815,67 @@
 	var Header = function (_React$Component) {
 	    _inherits(Header, _React$Component);
 
-	    function Header(props) {
+	    function Header() {
 	        _classCallCheck(this, Header);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
-
-	        _this.state = { categories: [] };
-
-	        return _this;
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
 	    }
 
 	    _createClass(Header, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
-
-	            fetch('/get-categories', {
-	                method: 'get',
-	                headers: {
-	                    'Accept': 'application/json',
-	                    'Content-Type': 'application/json'
-	                }
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (j) {
-
-	                _this2.setState({ categories: j });
-	            });
-	        }
-	    }, {
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
 
 	            return _react2.default.createElement(
-	                'header',
-	                { id: 'page-header', className: 'white' },
+	                "header",
+	                { id: "page-header", className: "white" },
 	                _react2.default.createElement(
-	                    'section',
-	                    { className: 'header-section lite-grey' },
-	                    _react2.default.createElement('div', { className: 'container' }),
+	                    "section",
+	                    { className: "header-section" },
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'upper-right-links' },
+	                        "div",
+	                        { className: "upper-right-links" },
 	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '' },
-	                            'Join /log in'
+	                            "a",
+	                            { href: "" },
+	                            "Join /log in"
 	                        ),
 	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '' },
-	                            'Site feedback'
+	                            "a",
+	                            { href: "" },
+	                            "Site feedback"
 	                        ),
 	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '' },
-	                            'Help'
+	                            "a",
+	                            { href: "" },
+	                            "Help"
 	                        ),
 	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '/admin' },
-	                            'Admin'
+	                            "a",
+	                            { href: "/admin" },
+	                            "Admin"
 	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'section',
-	                    { className: 'header-section' },
+	                    "section",
+	                    { className: "header-section" },
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'container' },
+	                        "div",
+	                        { className: "container" },
 	                        _react2.default.createElement(
-	                            'nav',
+	                            "nav",
 	                            null,
-	                            this.state.categories.map(function (t, k) {
+	                            this.props.init.categories.map(function (t, k) {
 
 	                                return _react2.default.createElement(
-	                                    'a',
-	                                    { key: k, href: '' },
+	                                    "a",
+	                                    { stateData: t, key: k, href: t.url },
 	                                    t.categoryName
 	                                );
 	                            })
 	                        )
-	                    )
+	                    ),
+	                    _react2.default.createElement("div", { className: "lower-header-bar" })
 	                )
 	            );
 	        }
@@ -20031,17 +20015,9 @@
 
 	var _sideBar2 = _interopRequireDefault(_sideBar);
 
-	var _adminHeader = __webpack_require__(166);
+	var _adminView = __webpack_require__(166);
 
-	var _adminHeader2 = _interopRequireDefault(_adminHeader);
-
-	var _categoryInputForm = __webpack_require__(167);
-
-	var _categoryInputForm2 = _interopRequireDefault(_categoryInputForm);
-
-	var _categoriesTable = __webpack_require__(168);
-
-	var _categoriesTable2 = _interopRequireDefault(_categoriesTable);
+	var _adminView2 = _interopRequireDefault(_adminView);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20054,78 +20030,13 @@
 	var Base = function (_React$Component) {
 	    _inherits(Base, _React$Component);
 
-	    function Base(props) {
+	    function Base() {
 	        _classCallCheck(this, Base);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Base).call(this, props));
-
-	        _this.state = { categories: [] };
-	        _this.removeCategory = _this.removeCategory.bind(_this);
-	        _this.submitForm = _this.submitForm.bind(_this);
-
-	        return _this;
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Base).apply(this, arguments));
 	    }
 
 	    _createClass(Base, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
-
-	            fetch('/get-categories', {
-	                method: 'get',
-	                headers: {
-	                    'Accept': 'application/json',
-	                    'Content-Type': 'application/json'
-	                }
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (j) {
-
-	                _this2.setState({ categories: j });
-	            });
-	        }
-	    }, {
-	        key: 'submitForm',
-	        value: function submitForm(submission) {
-	            var _this3 = this;
-
-	            console.log('submission', submission);
-
-	            fetch('/submit-category', {
-	                method: 'post',
-	                headers: {
-	                    'Accept': 'application/json',
-	                    'Content-Type': 'application/json'
-	                },
-	                body: JSON.stringify({
-	                    "categoryName": submission.categoryName,
-	                    "title": submission.pageTitle
-	                })
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (j) {
-
-	                _this3.setState({ categories: j });
-	            });
-	        }
-	    }, {
-	        key: 'removeCategory',
-	        value: function removeCategory(item) {
-	            var _this4 = this;
-
-	            fetch('/delete-category/' + item, {
-	                method: 'delete'
-
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (l) {
-
-	                _this4.setState({ categories: l });
-
-	                console.log('RESP-- >>> ----', _this4.state.categories);
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 
@@ -20133,25 +20044,7 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(_sideBar2.default, null),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'admin-view' },
-	                    _react2.default.createElement(_adminHeader2.default, null),
-	                    _react2.default.createElement(
-	                        'section',
-	                        null,
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-5' },
-	                            _react2.default.createElement(_categoryInputForm2.default, { submitForm: this.submitForm })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-6' },
-	                            _react2.default.createElement(_categoriesTable2.default, { categories: this.state.categories, removeCategory: this.removeCategory })
-	                        )
-	                    )
-	                )
+	                _react2.default.createElement(_adminView2.default, { init: this.props.init })
 	            );
 	        }
 	    }]);
@@ -20272,6 +20165,148 @@
 /* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _adminHeader = __webpack_require__(167);
+
+	var _adminHeader2 = _interopRequireDefault(_adminHeader);
+
+	var _categoryInputForm = __webpack_require__(168);
+
+	var _categoryInputForm2 = _interopRequireDefault(_categoryInputForm);
+
+	var _categoriesTable = __webpack_require__(169);
+
+	var _categoriesTable2 = _interopRequireDefault(_categoriesTable);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AdminView = function (_React$Component) {
+	    _inherits(AdminView, _React$Component);
+
+	    function AdminView(props) {
+	        _classCallCheck(this, AdminView);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AdminView).call(this, props));
+
+	        _this.state = { categories: [] };
+	        _this.removeCategory = _this.removeCategory.bind(_this);
+	        _this.submitForm = _this.submitForm.bind(_this);
+
+	        return _this;
+	    }
+
+	    _createClass(AdminView, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            console.log('Mounted view');
+
+	            fetch('/get-categories', {
+	                method: 'get',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                }
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (j) {
+
+	                _this2.setState({ categories: j });
+	            });
+	        }
+	    }, {
+	        key: 'submitForm',
+	        value: function submitForm(submission) {
+	            var _this3 = this;
+
+	            fetch('/submit-category', {
+	                method: 'post',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                },
+	                body: JSON.stringify({
+	                    "categoryName": submission.categoryName,
+	                    "title": submission.pageTitle,
+	                    "pageDescription": submission.pageDescription,
+	                    "metaKeywords": submission.metaKeywords,
+	                    "url": submission.url
+	                })
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (j) {
+
+	                _this3.setState({ categories: j });
+	            });
+	        }
+	    }, {
+	        key: 'removeCategory',
+	        value: function removeCategory(item) {
+	            var _this4 = this;
+
+	            fetch('/delete-category/' + item, {
+	                method: 'delete'
+
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (l) {
+
+	                _this4.setState({ categories: l });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'admin-view' },
+	                    _react2.default.createElement(_adminHeader2.default, null),
+	                    _react2.default.createElement(
+	                        'section',
+	                        null,
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-5' },
+	                            _react2.default.createElement(_categoryInputForm2.default, { submitForm: this.submitForm })
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-6' },
+	                            _react2.default.createElement(_categoriesTable2.default, { categories: this.state.categories, removeCategory: this.removeCategory })
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AdminView;
+	}(_react2.default.Component);
+
+	module.exports = AdminView;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20342,7 +20377,7 @@
 	module.exports = AdminHeader;
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20377,8 +20412,10 @@
 
 	        _this.handleCategoryName = _this.handleCategoryName.bind(_this);
 	        _this.handlePageTitle = _this.handlePageTitle.bind(_this);
+	        _this.handleDescription = _this.handleDescription.bind(_this);
+	        _this.handleMetaKeywords = _this.handleMetaKeywords.bind(_this);
 	        _this.handleSubmit = _this.handleSubmit.bind(_this);
-
+	        _this.handleURL = _this.handleURL.bind(_this);
 	        return _this;
 	    }
 
@@ -20397,21 +20434,46 @@
 	            });
 	        }
 	    }, {
+	        key: 'handleURL',
+	        value: function handleURL(e) {
+	            this.setState({
+	                url: e.target.value
+	            });
+	        }
+	    }, {
+	        key: 'handleDescription',
+	        value: function handleDescription(e) {
+	            this.setState({
+	                pageDescription: e.target.value
+	            });
+	        }
+	    }, {
+	        key: 'handleMetaKeywords',
+	        value: function handleMetaKeywords(e) {
+	            this.setState({
+	                metaKeywords: e.target.value
+	            });
+	        }
+	    }, {
 	        key: 'handleSubmit',
 	        value: function handleSubmit(e) {
 
 	            e.preventDefault();
 
-	            var _c = this.state.categoryName;
-	            var _p = this.state.pageTitle;
-
 	            this.state.submitForm({
-	                categoryName: _c, pageTitle: _p
+	                categoryName: this.state.categoryName,
+	                pageTitle: this.state.pageTitle,
+	                pageDescription: this.state.pageDescription,
+	                metaKeywords: this.state.metaKeywords,
+	                url: this.state.url
 	            });
 
 	            this.setState({
 	                categoryName: '',
-	                pageTitle: ''
+	                pageTitle: '',
+	                pageDescription: '',
+	                metaKeywords: '',
+	                url: ''
 	            });
 	        }
 	    }, {
@@ -20439,9 +20501,147 @@
 	                        _react2.default.createElement(
 	                            'label',
 	                            null,
+	                            'Page heading'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'heading', value: this.state.heading, onChange: this.handleHeading })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'Page URL'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'pageUrl', value: this.state.url, onChange: this.handleURL })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'Banner image path'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'bannerImage', value: this.state.bannerImage, onChange: this.bannerImage })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field divider' },
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            'Page Data'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
 	                            'Page title'
 	                        ),
 	                        _react2.default.createElement('input', { type: 'text', name: 'pageTitle', value: this.state.pageTitle, onChange: this.handlePageTitle })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'Page description'
+	                        ),
+	                        _react2.default.createElement('textarea', { name: 'pageDescription', value: this.state.pageDescription, onChange: this.handleDescription })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'Meta keywords'
+	                        ),
+	                        _react2.default.createElement('textarea', { name: 'metaKeywords', value: this.state.metaKeywords, onChange: this.handleMetaKeywords })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field divider' },
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            'Open Graph Markup'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'OGM - URL'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'pageTitle' }),
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'Check to use page URL'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'checkbox' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'OGM - Type'
+	                        ),
+	                        _react2.default.createElement(
+	                            'select',
+	                            null,
+	                            _react2.default.createElement(
+	                                'option',
+	                                null,
+	                                'Website'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                null,
+	                                'Article'
+	                            )
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'pageTitle' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'OGM - Title'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'pageTitle' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'OGM - title'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', name: 'pageTitle' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'field' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'OGM - image'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'file', name: 'pageTitle' })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -20463,10 +20663,10 @@
 	module.exports = CategoryForm;
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20492,23 +20692,43 @@
 	    }
 
 	    _createClass(TableItem, [{
-	        key: "render",
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log('Mounted view -----');
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "tr",
+	                'tr',
 	                null,
 	                _react2.default.createElement(
-	                    "td",
+	                    'td',
 	                    null,
 	                    this.props.data.categoryName
 	                ),
 	                _react2.default.createElement(
-	                    "td",
+	                    'td',
+	                    null,
+	                    this.props.data._id
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.data.url
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.data.pageDescription
+	                ),
+	                _react2.default.createElement(
+	                    'td',
 	                    null,
 	                    _react2.default.createElement(
-	                        "button",
-	                        { className: "admin-btn btn-secondary", onClick: this.props.removeCategory.bind(this, this.props.data._id) },
-	                        "Remove"
+	                        'button',
+	                        { className: 'admin-btn btn-secondary', onClick: this.props.removeCategory.bind(this, this.props.data._id) },
+	                        'Remove'
 	                    )
 	                )
 	            );
@@ -20528,50 +20748,77 @@
 	    }
 
 	    _createClass(CategoriesTable, [{
-	        key: "render",
-	        value: function render() {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
 	            var _this3 = this;
 
+	            console.log('Mounted view');
+
+	            fetch('/get-categories', {
+	                method: 'get',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                }
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (j) {
+
+	                _this3.setState({ categories: categories });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this4 = this;
+
+	            console.log(this.props.categories);
+
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "category-table" },
+	                'div',
+	                { className: 'category-table' },
 	                _react2.default.createElement(
-	                    "table",
+	                    'table',
 	                    null,
 	                    _react2.default.createElement(
-	                        "thead",
+	                        'thead',
 	                        null,
 	                        _react2.default.createElement(
-	                            "tr",
+	                            'tr',
 	                            null,
 	                            _react2.default.createElement(
-	                                "th",
+	                                'th',
 	                                null,
-	                                "Category name"
+	                                'Category name'
 	                            ),
 	                            _react2.default.createElement(
-	                                "th",
+	                                'th',
 	                                null,
-	                                "Category name"
+	                                'Category id'
 	                            ),
 	                            _react2.default.createElement(
-	                                "th",
+	                                'th',
 	                                null,
-	                                "Remove Category"
+	                                'URL'
 	                            ),
 	                            _react2.default.createElement(
-	                                "th",
+	                                'th',
 	                                null,
-	                                "Remove Category"
+	                                'Description'
+	                            ),
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'Remove Category'
 	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        "tbody",
+	                        'tbody',
 	                        null,
 	                        this.props.categories.map(function (t, k) {
 
-	                            return _react2.default.createElement(TableItem, { key: k, data: t, removeCategory: _this3.props.removeCategory });
+	                            return _react2.default.createElement(TableItem, { key: k, data: t, removeCategory: _this4.props.removeCategory });
 	                        })
 	                    )
 	                )
@@ -20583,6 +20830,61 @@
 	}(_react2.default.Component);
 
 	module.exports = CategoriesTable;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _headerCommon = __webpack_require__(161);
+
+	var _headerCommon2 = _interopRequireDefault(_headerCommon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Base = function (_React$Component) {
+	    _inherits(Base, _React$Component);
+
+	    function Base(props) {
+	        _classCallCheck(this, Base);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Base).call(this, props));
+	    }
+
+	    _createClass(Base, [{
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_headerCommon2.default, { init: this.props.init }),
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    this.props.init.heading
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Base;
+	}(_react2.default.Component);
+
+	module.exports = Base;
 
 /***/ }
 /******/ ]);

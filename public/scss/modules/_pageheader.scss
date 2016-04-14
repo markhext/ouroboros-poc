@@ -4,14 +4,17 @@
 
 
 
-  .header-section {
-    border-bottom: 1px solid #DDDDDD;
+  section.header-section {
+    border-bottom: 1px solid #eaeaea;
     min-height: 47px;
+    margin-top:0;
+
 
 
     &.lite-grey {
-      background: url('../images/texture_tile_2.png') #FFFFFF;
-      border-bottom: 1px solid #DDDDDD;
+      background: url('../images/texture_tile_2.png') #fff;
+      border-bottom: 1px solid #ccc;
+
 
     }
 
@@ -32,14 +35,17 @@
       a {
         margin-left: 24px;
         font-size: .9rem;
+        color:#888;
       }
     }
 
     nav {
       margin: 0 auto;
-      width:360px;
-      padding: 48px 0 12px;
+      padding: 24px 0 16px;
       height:auto;
+      text-align: center;
+      border-bottom: 1px solid #eaeaea;
+
 
       a {
         text-decoration: none;
@@ -47,16 +53,27 @@
         text-align: center;
         margin-right: 36px;
         text-transform: uppercase;
+        padding-bottom: 14px;
+        border-bottom:3px solid transparent;
+        transition: all linear 250ms;
+
+        &:hover {
+          border-bottom:3px solid #53a4d7;
+        }
 
         &:last-child {
           margin-right: 0;
         }
+
+
       }
 
     }
+
+
+    .lower-header-bar {
+      background: url('../images/texture_tile_2.png') #fff;
+      padding: 24px 0;
+    }
   }
-
-
-
-
 }

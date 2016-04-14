@@ -24,23 +24,26 @@ class PostNewCategory {
     }
 
     validate () {
-        //console.log( this.request.payload + 'Its working');
 
-
-        //var db = server.plugins['hapi-mongoose'].connection;
-        //
-        //var mongoose = server.plugins['hapi-mongoose'].lib;
 
         var jsonPayload = this.request.payload;
 
         var schema = {
             categoryName: Joi.string(),
-            title: Joi.string()
+            title: Joi.string(),
+            pageDescription: Joi.string(),
+            metaKeywords: Joi.string(),
+            url: Joi.string()
+
         };
 
         var _title = {
             categoryName: jsonPayload.categoryName,
-            title: jsonPayload.title
+            title: jsonPayload.title,
+            pageDescription: jsonPayload.pageDescription,
+            metaKeywords: jsonPayload.metaKeywords,
+            url: jsonPayload.url
+
         };
 
         Joi.validate(_title, schema,  (err, value) => {

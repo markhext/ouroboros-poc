@@ -1,52 +1,14 @@
 import React from 'react';
 
-
-
 class Header extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {categories: []};
-
-
-    }
-
-    componentDidMount () {
-
-
-        fetch('/get-categories', {
-            method: 'get',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((response)=> {
-                return response.json();
-            }).then((j)=>{
-
-                this.setState({categories: j});
-
-            });
-    }
-
-
-
     render () {
-
 
         return (
 
             <header id="page-header" className="white">
 
-                <section className="header-section lite-grey">
-
-
-
-                    <div className="container">
-
-                    </div>
+                <section className="header-section">
 
                     <div className="upper-right-links">
                         <a href="">Join /log in</a>
@@ -64,31 +26,24 @@ class Header extends React.Component {
 
                         <nav>
 
-                        { this.state.categories.map((t, k)=>{
+                        { this.props.init.categories.map((t, k)=>{
 
                             return (
 
-
-                                <a key={k} href="">{t.categoryName}</a>
+                                <a stateData={t} key={k} href={t.url}>{t.categoryName}</a>
                             )
 
                         }) }
 
-                            </nav>
+                        </nav>
 
+                    </div>
 
-
-
-
+                    <div className="lower-header-bar">
 
                     </div>
 
                 </section>
-
-
-
-
-
 
             </header>
         )

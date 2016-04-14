@@ -1,18 +1,13 @@
 
 'use strict';
 
-
 const Inert = require('inert');
 const Vision = require('Vision');
 const HapiReactViews = require('hapi-react-views');
 
 const IsomophicRenderer = require('../controllers/isomophicRenderer.js');
-
 const PostNewCategory = require('../controllers/postNewCategory.js');
-
-
 const Categories = require('../models/newCategory.model.js');
-
 
 
 /**
@@ -39,12 +34,16 @@ class Routes {
             path: '../views'
         });
 
+        Categories.find({}).lean().exec((err, doc)=>{
+            this.categoriesArray = doc;
+        });
+
         this.homeRoute();
+        this.categoryRoute();
         this.adminRoute();
         this.images();
         this.builds();
         this.categoryPost();
-
 
     }
 
@@ -62,7 +61,8 @@ class Routes {
                         response: reply,
                         state: {
                             headTitle: 'Home Page',
-                            base: 'home'
+                            base: 'home',
+                            categories: this.categoriesArray
                         }
 
                     });
@@ -71,6 +71,49 @@ class Routes {
 
                 }.bind(this)
             });
+    }
+
+
+    categoryRoute () {
+
+        this.server.route({
+            method: 'GET',
+            path: '/{category}',
+            handler: function (request, reply) {
+
+                var _param = encodeURIComponent(request.params.category);
+
+
+                Categories.findOne({url:`/${_param}`}).lean().exec((err, doc)=>{
+
+                    if(doc === null){
+                        return;
+                    }
+
+                    if(doc.length === 0){ reply("not Found --->" ) } else {
+
+
+                        var renderer = new IsomophicRenderer({
+                            server: this.server,
+                            response: reply,
+                            state: {
+                                headTitle: doc.title,
+                                pageDescription: doc.pageDescription,
+                                metaKeywords: doc.metaKeywords,
+                                base: 'categories',
+                                heading: doc.categoryName,
+                                categories: this.categoriesArray
+                            }
+
+                        });
+
+                        renderer.render;
+                    }
+                });
+
+
+            }.bind(this)
+        });
     }
 
     adminRoute () {
@@ -85,7 +128,8 @@ class Routes {
                     response: reply,
                     state: {
                         headTitle: 'Admin Page',
-                        base: 'admin'
+                        base: 'admin',
+                        categories: this.categoriesArray
                     }
 
                 });
@@ -135,7 +179,6 @@ class Routes {
      JSON POSTS
      --------------------*/
 
-
     categoryPost () {
         this.server.route([{
             method: 'POST',
@@ -146,7 +189,6 @@ class Routes {
 
                 postNewCategory.process;
             }
-
 
         },
 
@@ -160,7 +202,6 @@ class Routes {
                     reply(doc);
 
                 });
-
             }
 
         },
@@ -188,11 +229,7 @@ class Routes {
                     }
 
 
-
-
                 });
-
-
 
 
             }
@@ -200,10 +237,7 @@ class Routes {
         }
 
 
-
-
         ]);
-
 
     }
 

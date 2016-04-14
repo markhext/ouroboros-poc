@@ -43,10 +43,8 @@ class IsomophicRenderer {
                 _self.config.response(htmlOutput);
             });
         });
-
     }
 
 }
-
 
 module.exports = IsomophicRenderer;

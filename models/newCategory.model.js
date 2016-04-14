@@ -3,7 +3,10 @@ var mongoose = require('mongoose'),
 
 var Category = {
     categoryName: String,
-    title: String
+    title: String,
+    pageDescription: String,
+    metaKeywords: String,
+    url: String
 };
 
 
