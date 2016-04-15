@@ -10,7 +10,6 @@ class Banner extends React.Component {
         return (
             <div id="banner">
 
-                <SideNav />
 
                 <img src="../public/images/banner.jpg" />
 

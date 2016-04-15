@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from '../common/header.common.jsx';
 import Banner from './banner.jsx';
+import Footer from '../common/footer.common.jsx';
 
 
 class Layout extends React.Component {
@@ -15,7 +16,7 @@ class Layout extends React.Component {
 
                 <Banner />
 
-                <h1>The Summer has arrived</h1>
+                <Footer />
 
             </div>
 

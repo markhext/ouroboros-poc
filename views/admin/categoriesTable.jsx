@@ -39,7 +39,7 @@ class CategoriesTable extends React.Component {
                 return response.json();
             }).then((j)=>{
 
-                this.setState({categories: categories});
+                this.setState({categories: j});
 
             });
     }

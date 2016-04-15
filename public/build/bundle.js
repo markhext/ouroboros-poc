@@ -19675,11 +19675,11 @@
 
 	var _base2 = _interopRequireDefault(_base);
 
-	var _base3 = __webpack_require__(164);
+	var _base3 = __webpack_require__(165);
 
 	var _base4 = _interopRequireDefault(_base3);
 
-	var _base5 = __webpack_require__(170);
+	var _base5 = __webpack_require__(172);
 
 	var _base6 = _interopRequireDefault(_base5);
 
@@ -19753,6 +19753,10 @@
 
 	var _banner2 = _interopRequireDefault(_banner);
 
+	var _footerCommon = __webpack_require__(164);
+
+	var _footerCommon2 = _interopRequireDefault(_footerCommon);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19778,11 +19782,7 @@
 	                null,
 	                _react2.default.createElement(_headerCommon2.default, { init: this.props.init }),
 	                _react2.default.createElement(_banner2.default, null),
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'The Summer has arrived'
-	                )
+	                _react2.default.createElement(_footerCommon2.default, null)
 	            );
 	        }
 	    }]);
@@ -19925,7 +19925,6 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'banner' },
-	                _react2.default.createElement(_sideNav2.default, null),
 	                _react2.default.createElement('img', { src: '../public/images/banner.jpg' })
 	            );
 	        }
@@ -20011,11 +20010,53 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _sideBar = __webpack_require__(165);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Footer = function (_React$Component) {
+	    _inherits(Footer, _React$Component);
+
+	    function Footer() {
+	        _classCallCheck(this, Footer);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).apply(this, arguments));
+	    }
+
+	    _createClass(Footer, [{
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement('footer', null);
+	        }
+	    }]);
+
+	    return Footer;
+	}(_react2.default.Component);
+
+	module.exports = Footer;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _sideBar = __webpack_require__(166);
 
 	var _sideBar2 = _interopRequireDefault(_sideBar);
 
-	var _adminView = __webpack_require__(166);
+	var _adminView = __webpack_require__(167);
 
 	var _adminView2 = _interopRequireDefault(_adminView);
 
@@ -20030,21 +20071,46 @@
 	var Base = function (_React$Component) {
 	    _inherits(Base, _React$Component);
 
-	    function Base() {
+	    function Base(props) {
 	        _classCallCheck(this, Base);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Base).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Base).call(this, props));
+
+	        _this.state = { view: 1 };
+	        return _this;
 	    }
 
 	    _createClass(Base, [{
+	        key: 'handleViewChange',
+	        value: function handleViewChange(opt) {
+	            switch (opt) {
+	                case 2:
+	                    this.setState({ view: 2 });
+	                    break;
+	                case 3:
+	                    this.setState({ view: 3 });
+	                    break;
+	                case 4:
+	                    this.setState({ view: 4 });
+	                    break;
+	                case 5:
+	                    this.setState({ view: 5 });
+	                    break;
+
+	                default:
+	                    this.setState({ view: 1 });
+
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_sideBar2.default, null),
-	                _react2.default.createElement(_adminView2.default, { init: this.props.init })
+	                _react2.default.createElement(_sideBar2.default, { changeView: this.handleViewChange }),
+	                _react2.default.createElement(_adminView2.default, { init: this.props.init, view: this.state.view })
 	            );
 	        }
 	    }]);
@@ -20055,7 +20121,7 @@
 	module.exports = Base;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20077,15 +20143,16 @@
 	var SideBar = function (_React$Component) {
 	    _inherits(SideBar, _React$Component);
 
-	    function SideBar() {
+	    function SideBar(props) {
 	        _classCallCheck(this, SideBar);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SideBar).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SideBar).call(this, props));
 	    }
 
 	    _createClass(SideBar, [{
 	        key: "render",
 	        value: function render() {
+
 	            return _react2.default.createElement(
 	                "div",
 	                { id: "side-bar" },
@@ -20102,7 +20169,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            null,
+	                            { onClick: this.props.changeView.bind(this, 1) },
 	                            _react2.default.createElement("i", { className: "fa fa-tachometer" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20112,7 +20179,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            null,
+	                            { onClick: this.props.changeView.bind(this, 2) },
 	                            _react2.default.createElement("i", { className: "fa fa-gift" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20122,7 +20189,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            null,
+	                            { onClick: this.props.changeView.bind(this, 3) },
 	                            _react2.default.createElement("i", { className: "fa fa-shopping-basket" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20132,7 +20199,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            null,
+	                            { onClick: this.props.changeView.bind(this, 4) },
 	                            _react2.default.createElement("i", { className: "fa fa-users" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20142,7 +20209,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            null,
+	                            { onClick: this.props.changeView.bind(this, 5) },
 	                            _react2.default.createElement("i", { className: "fa fa-cogs" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20162,7 +20229,7 @@
 	module.exports = SideBar;
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20173,17 +20240,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _adminHeader = __webpack_require__(167);
+	var _adminHeader = __webpack_require__(168);
 
 	var _adminHeader2 = _interopRequireDefault(_adminHeader);
 
-	var _categoryInputForm = __webpack_require__(168);
+	var _categoriesPage = __webpack_require__(169);
 
-	var _categoryInputForm2 = _interopRequireDefault(_categoryInputForm);
-
-	var _categoriesTable = __webpack_require__(169);
-
-	var _categoriesTable2 = _interopRequireDefault(_categoriesTable);
+	var _categoriesPage2 = _interopRequireDefault(_categoriesPage);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20201,76 +20264,19 @@
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AdminView).call(this, props));
 
-	        _this.state = { categories: [] };
-	        _this.removeCategory = _this.removeCategory.bind(_this);
-	        _this.submitForm = _this.submitForm.bind(_this);
+	        _this.state = { adminCategory: 0 };
 
 	        return _this;
 	    }
 
 	    _createClass(AdminView, [{
 	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
-
-	            console.log('Mounted view');
-
-	            fetch('/get-categories', {
-	                method: 'get',
-	                headers: {
-	                    'Accept': 'application/json',
-	                    'Content-Type': 'application/json'
-	                }
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (j) {
-
-	                _this2.setState({ categories: j });
-	            });
-	        }
-	    }, {
-	        key: 'submitForm',
-	        value: function submitForm(submission) {
-	            var _this3 = this;
-
-	            fetch('/submit-category', {
-	                method: 'post',
-	                headers: {
-	                    'Accept': 'application/json',
-	                    'Content-Type': 'application/json'
-	                },
-	                body: JSON.stringify({
-	                    "categoryName": submission.categoryName,
-	                    "title": submission.pageTitle,
-	                    "pageDescription": submission.pageDescription,
-	                    "metaKeywords": submission.metaKeywords,
-	                    "url": submission.url
-	                })
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (j) {
-
-	                _this3.setState({ categories: j });
-	            });
-	        }
-	    }, {
-	        key: 'removeCategory',
-	        value: function removeCategory(item) {
-	            var _this4 = this;
-
-	            fetch('/delete-category/' + item, {
-	                method: 'delete'
-
-	            }).then(function (response) {
-	                return response.json();
-	            }).then(function (l) {
-
-	                _this4.setState({ categories: l });
-	            });
-	        }
+	        value: function componentDidMount() {}
 	    }, {
 	        key: 'render',
 	        value: function render() {
+
+	            console.log('STATE---', this.props.view);
 
 	            return _react2.default.createElement(
 	                'div',
@@ -20279,20 +20285,7 @@
 	                    'div',
 	                    { className: 'admin-view' },
 	                    _react2.default.createElement(_adminHeader2.default, null),
-	                    _react2.default.createElement(
-	                        'section',
-	                        null,
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-5' },
-	                            _react2.default.createElement(_categoryInputForm2.default, { submitForm: this.submitForm })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-6' },
-	                            _react2.default.createElement(_categoriesTable2.default, { categories: this.state.categories, removeCategory: this.removeCategory })
-	                        )
-	                    )
+	                    _react2.default.createElement(_categoriesPage2.default, null)
 	                )
 	            );
 	        }
@@ -20304,7 +20297,7 @@
 	module.exports = AdminView;
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20377,7 +20370,138 @@
 	module.exports = AdminHeader;
 
 /***/ },
-/* 168 */
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _adminHeader = __webpack_require__(168);
+
+	var _adminHeader2 = _interopRequireDefault(_adminHeader);
+
+	var _categoryInputForm = __webpack_require__(170);
+
+	var _categoryInputForm2 = _interopRequireDefault(_categoryInputForm);
+
+	var _categoriesTable = __webpack_require__(171);
+
+	var _categoriesTable2 = _interopRequireDefault(_categoriesTable);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CategoriesPage = function (_React$Component) {
+	    _inherits(CategoriesPage, _React$Component);
+
+	    function CategoriesPage(props) {
+	        _classCallCheck(this, CategoriesPage);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CategoriesPage).call(this, props));
+
+	        _this.state = { categories: [] };
+	        _this.removeCategory = _this.removeCategory.bind(_this);
+	        _this.submitForm = _this.submitForm.bind(_this);
+
+	        return _this;
+	    }
+
+	    _createClass(CategoriesPage, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            fetch('/get-categories', {
+	                method: 'get',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                }
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (j) {
+
+	                _this2.setState({ categories: j });
+	            });
+	        }
+	    }, {
+	        key: 'submitForm',
+	        value: function submitForm(submission) {
+	            var _this3 = this;
+
+	            fetch('/submit-category', {
+	                method: 'post',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                },
+	                body: JSON.stringify({
+	                    "categoryName": submission.categoryName,
+	                    "title": submission.pageTitle,
+	                    "pageDescription": submission.pageDescription,
+	                    "metaKeywords": submission.metaKeywords,
+	                    "url": submission.url
+	                })
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (j) {
+
+	                _this3.setState({ categories: j });
+	            });
+	        }
+	    }, {
+	        key: 'removeCategory',
+	        value: function removeCategory(item) {
+	            var _this4 = this;
+
+	            fetch('/delete-category/' + item, {
+	                method: 'delete'
+
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (l) {
+
+	                _this4.setState({ categories: l });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'section',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-5' },
+	                    _react2.default.createElement(_categoryInputForm2.default, { submitForm: this.submitForm })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-6' },
+	                    _react2.default.createElement(_categoriesTable2.default, { categories: this.state.categories, removeCategory: this.removeCategory })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return CategoriesPage;
+	}(_react2.default.Component);
+
+	module.exports = CategoriesPage;
+
+/***/ },
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20663,7 +20787,7 @@
 	module.exports = CategoryForm;
 
 /***/ },
-/* 169 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20764,7 +20888,7 @@
 	                return response.json();
 	            }).then(function (j) {
 
-	                _this3.setState({ categories: categories });
+	                _this3.setState({ categories: j });
 	            });
 	        }
 	    }, {
@@ -20832,7 +20956,7 @@
 	module.exports = CategoriesTable;
 
 /***/ },
-/* 170 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20846,6 +20970,10 @@
 	var _headerCommon = __webpack_require__(161);
 
 	var _headerCommon2 = _interopRequireDefault(_headerCommon);
+
+	var _footerCommon = __webpack_require__(164);
+
+	var _footerCommon2 = _interopRequireDefault(_footerCommon);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20876,7 +21004,8 @@
 	                    'h1',
 	                    null,
 	                    this.props.init.heading
-	                )
+	                ),
+	                _react2.default.createElement(_footerCommon2.default, null)
 	            );
 	        }
 	    }]);
