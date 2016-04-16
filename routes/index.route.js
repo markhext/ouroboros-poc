@@ -34,6 +34,8 @@ class Routes {
             path: '../views'
         });
 
+        // TODO INIT ON REFRESH
+
         Categories.find({}).lean().exec((err, doc)=>{
             this.categoriesArray = doc;
         });

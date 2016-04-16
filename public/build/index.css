@@ -58,6 +58,10 @@ img {
 section {
   margin-top: 24px; }
 
+.title {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 24px; }
+
 [class*='col-'] {
   padding-right: 20px;
   float: left; }
@@ -119,11 +123,12 @@ section {
 
 .admin-btn {
   border: none;
-  padding: 12px 24px; }
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer; }
   .admin-btn.btn-primary {
     background: #779B74;
-    color: #ffffff;
-    font-size: 1rem; }
+    color: #ffffff; }
   .admin-btn.btn-secondary {
     background: transparent;
     color: #779B74;
