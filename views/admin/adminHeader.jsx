@@ -20,7 +20,6 @@ class AdminHeader extends React.Component {
 
     render () {
 
-        console.log('prop changed',this.props.view);
 
         var boardInfo;
 
@@ -39,7 +38,7 @@ class AdminHeader extends React.Component {
                 break;
             case 2:
                 boardInfo = {
-                    headerTitle: 'Products',
+                    headerTitle: 'Categories',
                     headerButtons: [
                         {
                             text: 'Add product',
@@ -50,6 +49,23 @@ class AdminHeader extends React.Component {
                 break;
             case 3:
                 boardInfo = {
+                    headerTitle: 'Products',
+                    headerButtons: [
+                        {
+                            text: 'Add product',
+                            btnStyle: 'admin-btn btn-primary pull-right',
+                            action: 2
+                        },
+                        {
+                            text: 'Add category',
+                            btnStyle: 'admin-btn btn-secondary pull-right',
+                            action: 1
+                        }
+                    ]
+                };
+                break;
+            case 4:
+                boardInfo = {
                     headerTitle: 'Sales',
                     headerButtons: [
                         {
@@ -59,7 +75,7 @@ class AdminHeader extends React.Component {
                     ]
                 };
                 break;
-            case 4:
+            case 5:
                 boardInfo = {
                     headerTitle: 'Users',
                     headerButtons: [
@@ -70,7 +86,7 @@ class AdminHeader extends React.Component {
                     ]
                 };
                 break;
-            case 5:
+            case 6:
                 boardInfo = {
                     headerTitle: 'Systems',
                     headerButtons: [
@@ -112,7 +128,7 @@ class AdminHeader extends React.Component {
                 <div className="admin-notification-block">
 
                 { boardInfo.headerButtons.map((i, k)=>{
-                    return <button key={k} className={i.btnStyle}>{i.text}</button>
+                    return <button onClick={this.props.pageAction.bind(this, i.action)} key={k} className={i.btnStyle}>{i.text}</button>
 
                 }) }
 

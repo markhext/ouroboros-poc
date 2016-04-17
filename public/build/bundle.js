@@ -19679,7 +19679,7 @@
 
 	var _base4 = _interopRequireDefault(_base3);
 
-	var _base5 = __webpack_require__(179);
+	var _base5 = __webpack_require__(182);
 
 	var _base6 = _interopRequireDefault(_base5);
 
@@ -20166,6 +20166,16 @@
 	                        _react2.default.createElement(
 	                            "li",
 	                            { onClick: this.props.changeView.bind(this, 2) },
+	                            _react2.default.createElement("i", { className: "fa fa-tasks" }),
+	                            _react2.default.createElement(
+	                                "span",
+	                                null,
+	                                "Categories"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "li",
+	                            { onClick: this.props.changeView.bind(this, 3) },
 	                            _react2.default.createElement("i", { className: "fa fa-gift" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20175,7 +20185,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            { onClick: this.props.changeView.bind(this, 3) },
+	                            { onClick: this.props.changeView.bind(this, 4) },
 	                            _react2.default.createElement("i", { className: "fa fa-shopping-basket" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20185,7 +20195,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            { onClick: this.props.changeView.bind(this, 4) },
+	                            { onClick: this.props.changeView.bind(this, 5) },
 	                            _react2.default.createElement("i", { className: "fa fa-users" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20195,7 +20205,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            "li",
-	                            { onClick: this.props.changeView.bind(this, 5) },
+	                            { onClick: this.props.changeView.bind(this, 6) },
 	                            _react2.default.createElement("i", { className: "fa fa-cogs" }),
 	                            _react2.default.createElement(
 	                                "span",
@@ -20234,19 +20244,23 @@
 
 	var _categoriesPage2 = _interopRequireDefault(_categoriesPage);
 
-	var _dashboardPage = __webpack_require__(172);
+	var _productsPage = __webpack_require__(172);
+
+	var _productsPage2 = _interopRequireDefault(_productsPage);
+
+	var _dashboardPage = __webpack_require__(175);
 
 	var _dashboardPage2 = _interopRequireDefault(_dashboardPage);
 
-	var _salesPage = __webpack_require__(176);
+	var _salesPage = __webpack_require__(179);
 
 	var _salesPage2 = _interopRequireDefault(_salesPage);
 
-	var _usersPage = __webpack_require__(177);
+	var _usersPage = __webpack_require__(180);
 
 	var _usersPage2 = _interopRequireDefault(_usersPage);
 
-	var _systemsPage = __webpack_require__(178);
+	var _systemsPage = __webpack_require__(181);
 
 	var _systemsPage2 = _interopRequireDefault(_systemsPage);
 
@@ -20264,12 +20278,24 @@
 	    function AdminView(props) {
 	        _classCallCheck(this, AdminView);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(AdminView).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AdminView).call(this, props));
+
+	        _this.state = { pageState: 1 };
+
+	        _this.pageActions = _this.pageActions.bind(_this);
+
+	        return _this;
 	    }
 
 	    _createClass(AdminView, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {}
+	    }, {
+	        key: 'pageActions',
+	        value: function pageActions(action) {
+
+	            this.setState({ pageState: action });
+	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
@@ -20285,12 +20311,15 @@
 	                    adminView = _react2.default.createElement(_categoriesPage2.default, null);
 	                    break;
 	                case 3:
-	                    adminView = _react2.default.createElement(_salesPage2.default, null);
+	                    adminView = _react2.default.createElement(_productsPage2.default, { pageState: this.state.pageState });
 	                    break;
 	                case 4:
-	                    adminView = _react2.default.createElement(_usersPage2.default, null);
+	                    adminView = _react2.default.createElement(_salesPage2.default, null);
 	                    break;
 	                case 5:
+	                    adminView = _react2.default.createElement(_usersPage2.default, null);
+	                    break;
+	                case 6:
 	                    adminView = _react2.default.createElement(_systemsPage2.default, null);
 	                    break;
 	                default:
@@ -20304,7 +20333,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'admin-view' },
-	                    _react2.default.createElement(_adminHeader2.default, { view: this.props.view }),
+	                    _react2.default.createElement(_adminHeader2.default, { view: this.props.view, pageAction: this.pageActions }),
 	                    adminView
 	                )
 	            );
@@ -20357,8 +20386,7 @@
 	    _createClass(AdminHeader, [{
 	        key: 'render',
 	        value: function render() {
-
-	            console.log('prop changed', this.props.view);
+	            var _this2 = this;
 
 	            var boardInfo;
 
@@ -20375,7 +20403,7 @@
 	                    break;
 	                case 2:
 	                    boardInfo = {
-	                        headerTitle: 'Products',
+	                        headerTitle: 'Categories',
 	                        headerButtons: [{
 	                            text: 'Add product',
 	                            btnStyle: 'admin-btn btn-primary pull-right'
@@ -20384,6 +20412,20 @@
 	                    break;
 	                case 3:
 	                    boardInfo = {
+	                        headerTitle: 'Products',
+	                        headerButtons: [{
+	                            text: 'Add product',
+	                            btnStyle: 'admin-btn btn-primary pull-right',
+	                            action: 2
+	                        }, {
+	                            text: 'Add category',
+	                            btnStyle: 'admin-btn btn-secondary pull-right',
+	                            action: 1
+	                        }]
+	                    };
+	                    break;
+	                case 4:
+	                    boardInfo = {
 	                        headerTitle: 'Sales',
 	                        headerButtons: [{
 	                            text: 'Add a return',
@@ -20391,7 +20433,7 @@
 	                        }]
 	                    };
 	                    break;
-	                case 4:
+	                case 5:
 	                    boardInfo = {
 	                        headerTitle: 'Users',
 	                        headerButtons: [{
@@ -20400,7 +20442,7 @@
 	                        }]
 	                    };
 	                    break;
-	                case 5:
+	                case 6:
 	                    boardInfo = {
 	                        headerTitle: 'Systems',
 	                        headerButtons: [{
@@ -20448,7 +20490,7 @@
 	                    boardInfo.headerButtons.map(function (i, k) {
 	                        return _react2.default.createElement(
 	                            'button',
-	                            { key: k, className: i.btnStyle },
+	                            { onClick: _this2.props.pageAction.bind(_this2, i.action), key: k, className: i.btnStyle },
 	                            i.text
 	                        );
 	                    }),
@@ -21061,11 +21103,402 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _productListView = __webpack_require__(173);
+
+	var _productListView2 = _interopRequireDefault(_productListView);
+
+	var _addProductsView = __webpack_require__(174);
+
+	var _addProductsView2 = _interopRequireDefault(_addProductsView);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ProductsPage = function (_React$Component) {
+	    _inherits(ProductsPage, _React$Component);
+
+	    function ProductsPage(props) {
+	        _classCallCheck(this, ProductsPage);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ProductsPage).call(this, props));
+
+	        _this.state = { categories: [] };
+
+	        return _this;
+	    }
+
+	    _createClass(ProductsPage, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            console.log(this.props.pageState);
+
+	            var pageState;
+
+	            if (this.props.pageState === 1) {
+	                pageState = _react2.default.createElement(_productListView2.default, null);
+	            } else {
+	                pageState = _react2.default.createElement(_addProductsView2.default, null);
+	            }
+
+	            return _react2.default.createElement(
+	                'section',
+	                null,
+	                pageState
+	            );
+	        }
+	    }]);
+
+	    return ProductsPage;
+	}(_react2.default.Component);
+
+	module.exports = ProductsPage;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ProductsList = function (_React$Component) {
+	    _inherits(ProductsList, _React$Component);
+
+	    function ProductsList(props) {
+	        _classCallCheck(this, ProductsList);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ProductsList).call(this, props));
+
+	        _this.state = { categories: [] };
+
+	        return _this;
+	    }
+
+	    _createClass(ProductsList, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                "section",
+	                null,
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "product-overview" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-6" },
+	                        _react2.default.createElement(
+	                            "h2",
+	                            null,
+	                            "Current product --- ",
+	                            this.props.pageState
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-2" },
+	                        _react2.default.createElement(
+	                            "h4",
+	                            null,
+	                            "Total sales"
+	                        ),
+	                        _react2.default.createElement(
+	                            "h2",
+	                            null,
+	                            "£1200.98"
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-2" },
+	                        _react2.default.createElement(
+	                            "h4",
+	                            null,
+	                            "Stock levels"
+	                        ),
+	                        _react2.default.createElement(
+	                            "h2",
+	                            null,
+	                            "23"
+	                        )
+	                    ),
+	                    _react2.default.createElement("div", { className: "clearfix" })
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "product-options-panel" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-6" },
+	                        _react2.default.createElement("input", { type: "text" }),
+	                        _react2.default.createElement(
+	                            "select",
+	                            null,
+	                            _react2.default.createElement(
+	                                "option",
+	                                null,
+	                                "Best sellers"
+	                            ),
+	                            _react2.default.createElement(
+	                                "option",
+	                                null,
+	                                "Latest"
+	                            ),
+	                            _react2.default.createElement(
+	                                "option",
+	                                null,
+	                                "Most viewed"
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-6" },
+	                        _react2.default.createElement(
+	                            "button",
+	                            { className: "admin-btn btn-secondary pull-right" },
+	                            "Next"
+	                        ),
+	                        _react2.default.createElement(
+	                            "button",
+	                            { className: "admin-btn btn-secondary pull-right" },
+	                            "Prev"
+	                        ),
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "pull-right" },
+	                            _react2.default.createElement(
+	                                "span",
+	                                null,
+	                                "1-5"
+	                            )
+	                        ),
+	                        _react2.default.createElement("div", { className: "clearfix" })
+	                    ),
+	                    _react2.default.createElement("div", { className: "clearfix" })
+	                ),
+	                _react2.default.createElement(
+	                    "table",
+	                    null,
+	                    _react2.default.createElement(
+	                        "thead",
+	                        null,
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Select"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Product"
+	                            ),
+	                            _react2.default.createElement("th", null),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "SKU"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Qty"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Stock levels"
+	                            ),
+	                            _react2.default.createElement("th", null),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Status"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Value"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Action"
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "tbody",
+	                        null,
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement("input", { type: "checkbox" })
+	                            ),
+	                            _react2.default.createElement("td", null),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Example product"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "0001"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "20"
+	                            ),
+	                            _react2.default.createElement("td", null),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "button",
+	                                    { className: "admin-btn btn-primary" },
+	                                    "Quick view"
+	                                )
+	                            ),
+	                            _react2.default.createElement("td", null),
+	                            _react2.default.createElement("td", null),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "button",
+	                                    { className: "admin-btn btn-secondary" },
+	                                    "Edit"
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductsList;
+	}(_react2.default.Component);
+
+	module.exports = ProductsList;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AddProducts = function (_React$Component) {
+	    _inherits(AddProducts, _React$Component);
+
+	    function AddProducts(props) {
+	        _classCallCheck(this, AddProducts);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddProducts).call(this, props));
+
+	        _this.state = { categories: [] };
+
+	        return _this;
+	    }
+
+	    _createClass(AddProducts, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                "section",
+	                null,
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-6" },
+	                        _react2.default.createElement(
+	                            "h2",
+	                            null,
+	                            "Add a product "
+	                        )
+	                    ),
+	                    _react2.default.createElement("div", { className: "col-2" }),
+	                    _react2.default.createElement("div", { className: "col-2" }),
+	                    _react2.default.createElement("div", { className: "clearfix" })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AddProducts;
+	}(_react2.default.Component);
+
+	module.exports = AddProducts;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _categoriesTable = __webpack_require__(171);
 
 	var _categoriesTable2 = _interopRequireDefault(_categoriesTable);
 
-	var _dataWheel = __webpack_require__(173);
+	var _dataWheel = __webpack_require__(176);
 
 	var _dataWheel2 = _interopRequireDefault(_dataWheel);
 
@@ -21214,7 +21647,7 @@
 	                                    null,
 	                                    _react2.default.createElement(
 	                                        'button',
-	                                        null,
+	                                        { className: 'admin-btn btn-secondary' },
 	                                        'Select'
 	                                    )
 	                                ),
@@ -21243,7 +21676,7 @@
 	module.exports = DashboardPage;
 
 /***/ },
-/* 173 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21254,7 +21687,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _D3wheel = __webpack_require__(174);
+	var _D3wheel = __webpack_require__(177);
 
 	var _D3wheel2 = _interopRequireDefault(_D3wheel);
 
@@ -21372,14 +21805,14 @@
 	module.exports = DataWheel;
 
 /***/ },
-/* 174 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _d = __webpack_require__(175);
+	var _d = __webpack_require__(178);
 
 	var _d2 = _interopRequireDefault(_d);
 
@@ -21424,7 +21857,7 @@
 	module.exports = D3Wheel;
 
 /***/ },
-/* 175 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -30983,7 +31416,7 @@
 	}();
 
 /***/ },
-/* 176 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31053,7 +31486,7 @@
 	module.exports = SalesPage;
 
 /***/ },
-/* 177 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31115,7 +31548,7 @@
 	module.exports = UsersPage;
 
 /***/ },
-/* 178 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31177,7 +31610,7 @@
 	module.exports = SystemsPage;
 
 /***/ },
-/* 179 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

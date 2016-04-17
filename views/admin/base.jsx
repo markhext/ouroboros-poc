@@ -1,10 +1,7 @@
 
 import React from 'react';
 import SideBar from './sideBar.jsx';
-
 import AdminView from './adminView.jsx';
-
-
 
 class Base extends React.Component {
 
@@ -24,7 +21,6 @@ class Base extends React.Component {
     }
 
     render () {
-
 
 
         return (

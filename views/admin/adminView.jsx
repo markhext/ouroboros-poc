@@ -2,6 +2,7 @@
 import React from 'react';
 import AdminHeader from './adminHeader.jsx';
 import CategoriesPage from './categoriesPage.jsx';
+import ProductsPage from './productsPage.jsx';
 import DashboardPage from './dashboardPage.jsx';
 import SalesPage from './salesPage.jsx';
 import UsersPage from './usersPage.jsx';
@@ -11,10 +12,20 @@ class AdminView extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {pageState: 1}
+
+        this.pageActions = this.pageActions.bind(this);
+
 
     }
 
     componentDidMount () {
+
+    }
+
+    pageActions ( action ) {
+
+        this.setState({pageState: action});
 
     }
 
@@ -32,12 +43,15 @@ class AdminView extends React.Component {
                 adminView = <CategoriesPage />;
                 break;
             case 3:
-                adminView = <SalesPage />;
+                adminView = <ProductsPage pageState={this.state.pageState} />;
                 break;
             case 4:
-                adminView = <UsersPage />;
+                adminView = <SalesPage />;
                 break;
             case 5:
+                adminView = <UsersPage />;
+                break;
+            case 6:
                 adminView = <SystemsPage />;
                 break;
             default :
@@ -45,14 +59,13 @@ class AdminView extends React.Component {
 
         }
 
-
         return (
 
             <div>
 
                 <div className="admin-view">
 
-                    <AdminHeader view={this.props.view} />
+                    <AdminHeader view={this.props.view} pageAction={this.pageActions} />
 
                     {adminView}
 

@@ -44,11 +44,6 @@ class DashboardPage extends React.Component {
                     </div>
 
 
-
-
-
-
-
                     <table>
 
                         <thead>
@@ -70,31 +65,31 @@ class DashboardPage extends React.Component {
                             <tr>
 
                                 <td>
-                                Example product
+                                    Example product
                                 </td>
 
                                 <td>
-                                001
+                                    001
                                 </td>
 
                                 <td>
-                                Kelly Abbott
+                                    Kelly Abbott
                                 </td>
 
                                 <td>
-                                1
+                                    1
                                 </td>
 
                                 <td>
-                                    <button>Select</button>
+                                    <button className="admin-btn btn-secondary">Select</button>
                                 </td>
 
                                 <td>
-                                £24.95
+                                    £24.95
                                 </td>
 
                                 <td>
-                                Awaiting
+                                    Awaiting
                                 </td>
 
                             </tr>
