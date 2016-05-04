@@ -4,17 +4,23 @@
   padding: 12px 24px;
   font-size: 1rem;
   cursor: pointer;
+  outline: none;
 
 
   &.btn-primary {
     background: #779B74;
     color:#ffffff;
+    border:1px solid transparent;
   }
 
   &.btn-secondary {
     background: transparent;
     color:#779B74;
     border:1px solid #779B74;
+
+    &.pull-right {
+      margin-right: 24px;
+    }
 
   }
 }

@@ -57,7 +57,7 @@ class AdminHeader extends React.Component {
                             action: 2
                         },
                         {
-                            text: 'Add category',
+                            text: 'Product list',
                             btnStyle: 'admin-btn btn-secondary pull-right',
                             action: 1
                         }

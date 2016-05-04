@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="React" type="javaScript">
+    <CLASSES />
+    <DOCUMENTATION>
+      <root url="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.min.js" />
+    </DOCUMENTATION>
+    <SOURCES />
+  </library>
+</component>

@@ -20418,7 +20418,7 @@
 	                            btnStyle: 'admin-btn btn-primary pull-right',
 	                            action: 2
 	                        }, {
-	                            text: 'Add category',
+	                            text: 'Product list',
 	                            btnStyle: 'admin-btn btn-secondary pull-right',
 	                            action: 1
 	                        }]
@@ -21437,10 +21437,10 @@
 	var AddProducts = function (_React$Component) {
 	    _inherits(AddProducts, _React$Component);
 
-	    function AddProducts(props) {
+	    function AddProducts(props, context) {
 	        _classCallCheck(this, AddProducts);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddProducts).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddProducts).call(this, props, context));
 
 	        _this.state = { categories: [] };
 
@@ -21462,15 +21462,79 @@
 	                    { className: "" },
 	                    _react2.default.createElement(
 	                        "div",
-	                        { className: "col-6" },
+	                        { className: "col-5" },
 	                        _react2.default.createElement(
-	                            "h2",
+	                            "header",
+	                            { className: "header-block" },
+	                            _react2.default.createElement(
+	                                "h2",
+	                                null,
+	                                "Product media"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "div",
 	                            null,
-	                            "Add a product "
+	                            _react2.default.createElement("figure", { className: "col-6" }),
+	                            _react2.default.createElement(
+	                                "aside",
+	                                { className: "col-5" },
+	                                _react2.default.createElement(
+	                                    "span",
+	                                    null,
+	                                    "Test"
+	                                )
+	                            ),
+	                            _react2.default.createElement("div", { className: "clearfix" })
 	                        )
 	                    ),
-	                    _react2.default.createElement("div", { className: "col-2" }),
-	                    _react2.default.createElement("div", { className: "col-2" }),
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-5" },
+	                        _react2.default.createElement(
+	                            "header",
+	                            { className: "header-block" },
+	                            _react2.default.createElement(
+	                                "h2",
+	                                null,
+	                                "Product page details"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "form",
+	                            null,
+	                            _react2.default.createElement(
+	                                "div",
+	                                { className: "field" },
+	                                _react2.default.createElement(
+	                                    "label",
+	                                    null,
+	                                    "Poduct name"
+	                                ),
+	                                _react2.default.createElement("input", { type: "text" })
+	                            ),
+	                            _react2.default.createElement(
+	                                "div",
+	                                { className: "field" },
+	                                _react2.default.createElement(
+	                                    "label",
+	                                    null,
+	                                    "Poduct name"
+	                                ),
+	                                _react2.default.createElement("input", { type: "text" })
+	                            ),
+	                            _react2.default.createElement(
+	                                "div",
+	                                { className: "field" },
+	                                _react2.default.createElement(
+	                                    "label",
+	                                    null,
+	                                    "Poduct name"
+	                                ),
+	                                _react2.default.createElement("input", { type: "text" })
+	                            )
+	                        )
+	                    ),
 	                    _react2.default.createElement("div", { className: "clearfix" })
 	                )
 	            );

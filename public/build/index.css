@@ -20,6 +20,9 @@ body {
   position: relative;
   margin: 0; }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #777; }
+
 h1 {
   font-size: 3rem;
   text-align: center;
@@ -57,6 +60,10 @@ img {
 
 section {
   margin-top: 24px; }
+
+.header-block {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 48px; }
 
 .title {
   border-bottom: 1px solid #ccc;
@@ -129,14 +136,18 @@ section {
   border: none;
   padding: 12px 24px;
   font-size: 1rem;
-  cursor: pointer; }
+  cursor: pointer;
+  outline: none; }
   .admin-btn.btn-primary {
     background: #779B74;
-    color: #ffffff; }
+    color: #ffffff;
+    border: 1px solid transparent; }
   .admin-btn.btn-secondary {
     background: transparent;
     color: #779B74;
     border: 1px solid #779B74; }
+    .admin-btn.btn-secondary.pull-right {
+      margin-right: 24px; }
 
 #page-header {
   width: 100%; }
